@@ -4,6 +4,7 @@ import com.ashina.chatapp.chat.ChatMessage;
 import com.ashina.chatapp.chat.MessageType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ public class WebSocketEventListener {
 
     private final SimpMessageSendingOperations messageTemplate;
 
+    @EventListener
     public void handleWebSocketDisconnectListner(
             SessionDisconnectEvent event
     ){
